@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SimpleCarController : MonoBehaviour {
+public class Controll : MonoBehaviour {
 
 	public void GetInput()
 	{
