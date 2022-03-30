@@ -48,6 +48,7 @@ public class Controll : MonoBehaviour {
 		Steer();
 		Accelerate();
 		UpdateWheelPoses();
+		
 	}
 
 	private float m_horizontalInput;
