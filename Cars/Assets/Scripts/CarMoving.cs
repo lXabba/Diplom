@@ -15,6 +15,9 @@ public class CarMoving : MonoBehaviour
     private float verticalInput;
     private bool onGround;
     private float lastYRotaion;
+
+    //private int gearNum = 1;
+    public float brakeTorque = 50000;
     void Start()
     {
         //lastYRotaion = transform.rotation.eulerAngles.y;
@@ -24,7 +27,21 @@ public class CarMoving : MonoBehaviour
 
     void Update()
     {
-
+        if (Input.GetKey(KeyCode.Alpha1)){
+            motorTorque = 100;
+        }
+        if (Input.GetKey(KeyCode.Alpha2)){
+            motorTorque = 200;
+        }
+        if (Input.GetKey(KeyCode.Alpha3)){
+            motorTorque = 300;
+        }
+        if (Input.GetKey(KeyCode.Alpha4)){
+            motorTorque = 400;
+        }
+        if (Input.GetKey(KeyCode.Alpha5)){
+            motorTorque = 500;
+        }
     }
 
     void FixedUpdate()
@@ -106,8 +123,8 @@ public class CarMoving : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.Space))
             {
-                pair.driverWheelcolider.brakeTorque = 50000;
-                pair.passengerWheelcolider.brakeTorque = 50000;
+                pair.driverWheelcolider.brakeTorque = brakeTorque;
+                pair.passengerWheelcolider.brakeTorque = brakeTorque;
             }
             else
             {
