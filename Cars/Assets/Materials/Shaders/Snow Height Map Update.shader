@@ -3,6 +3,7 @@
     Properties
     {
         _DrawBrush ("Brush", 2D) = "white" {}
+        
     }
 
     SubShader
@@ -34,11 +35,12 @@
                 float2x2 rot = float2x2(cos(_DrawAngle), -sin(_DrawAngle),
                                         sin(_DrawAngle), cos(_DrawAngle));
                 pos = mul(rot, pos);
-                pos /= 0.1;
+                pos /= 0.1/10;
                 pos += float2(0.5, 0.5);
                 
                 // И берём этот цвет (если он вообще вышел за пределы текстуры маски-кисти, то будет белый, т.к. у текстуры стоит Wrap Mode: Clamp)
                 float4 drawColor = tex2D(_DrawBrush, pos);
+                
                 
                 // min можно заменить на умножение, тогда рисование будет ощущаться немного иначе. _RestoreAmount можно убрать чтобы снег не выпадал и текстура не восстанавливалась со временем
                 return min(previousColor, drawColor) + _RestoreAmount;

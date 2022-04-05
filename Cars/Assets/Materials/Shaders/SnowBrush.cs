@@ -28,7 +28,7 @@ public class SnowBrush : MonoBehaviour
     private void Update()
     {
         // Раскомментируйте одну из этих строчек, чтобы выбрать какие объекты будут копать снег
-//        DrawWithMouse();
+        //   DrawWithMouse();
         DrawWithTires();
 //        DrawWithPaws();
 

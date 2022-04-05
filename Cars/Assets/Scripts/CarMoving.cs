@@ -7,42 +7,58 @@ public class CarMoving : MonoBehaviour
     public WheelsPair[] wheelsPairs;
 
     public int steerAngle; //Угол поворота в градусах
+    public float torqueValue;
     public float motorTorque; //Крутящий момент двигателя на оси колеса выражается в ньютон-метрах
     [Range(0, 1)]
     public float steerControl;
     public Transform centreOfMass;
+    public float stiffnessSideway = 1;
+    public float stiffnessForward = 1;
     private float horinzontalInput;
     private float verticalInput;
     private bool onGround;
     private float lastYRotaion;
 
-    //private int gearNum = 1;
+    private int gearNum = 1;
     public float brakeTorque = 50000;
     void Start()
     {
         //lastYRotaion = transform.rotation.eulerAngles.y;
         GetComponent<Rigidbody>().centerOfMass = centreOfMass.localPosition;
+        motorTorque = torqueValue;
+        stiffnessSideway = 1;
     }
 
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.Alpha1)){
-            motorTorque = 100;
+        if (Input.GetKey(KeyCode.Alpha1))
+        {
+            motorTorque = torqueValue * 1;
+            gearNum = 1;
         }
-        if (Input.GetKey(KeyCode.Alpha2)){
-            motorTorque = 200;
+        if (Input.GetKey(KeyCode.Alpha2))
+        {
+            motorTorque = torqueValue * 2;
+            gearNum = 2;
         }
-        if (Input.GetKey(KeyCode.Alpha3)){
-            motorTorque = 300;
+        if (Input.GetKey(KeyCode.Alpha3))
+        {
+            motorTorque = torqueValue * 3;
+            gearNum = 3;
         }
-        if (Input.GetKey(KeyCode.Alpha4)){
-            motorTorque = 400;
+        if (Input.GetKey(KeyCode.Alpha4))
+        {
+            motorTorque = torqueValue * 4;
+            gearNum = 4;
         }
-        if (Input.GetKey(KeyCode.Alpha5)){
-            motorTorque = 500;
+        if (Input.GetKey(KeyCode.Alpha5))
+        {
+            motorTorque = torqueValue * 5;
+            gearNum = 5;
         }
     }
+
 
     void FixedUpdate()
     {
@@ -131,6 +147,26 @@ public class CarMoving : MonoBehaviour
                 pair.driverWheelcolider.brakeTorque = 0;
                 pair.passengerWheelcolider.brakeTorque = 0;
             }
+        }
+    }
+
+    public void UpdateValues()
+    {
+        motorTorque = torqueValue * gearNum;
+        foreach (var pair in wheelsPairs)
+        {
+          
+            pair.passengerWheelcolider.brakeTorque = brakeTorque;
+
+            WheelFrictionCurve wfc = pair.driverWheelcolider.sidewaysFriction;
+            wfc.stiffness = stiffnessSideway;
+            pair.driverWheelcolider.sidewaysFriction = wfc;
+            pair.passengerWheelcolider.sidewaysFriction = wfc;
+
+            wfc = pair.driverWheelcolider.forwardFriction;
+            wfc.stiffness = stiffnessForward;
+            pair.driverWheelcolider.forwardFriction = wfc;
+            pair.passengerWheelcolider.forwardFriction = wfc;
         }
     }
 }
