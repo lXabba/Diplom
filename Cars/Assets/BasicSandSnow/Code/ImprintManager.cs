@@ -117,7 +117,7 @@ public class ImprintManager : MonoBehaviour
     /// </summary>
     void OnDestroy()
     {
-        this.RenderTextureCamera.Release();
+       // this.RenderTextureCamera.Release();
     }
             
     /// <summary>

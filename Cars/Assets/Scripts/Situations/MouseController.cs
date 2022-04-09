@@ -22,14 +22,18 @@ public class MouseController : MonoBehaviour
             ray=Camera.main.ScreenPointToRay(Input.mousePosition);
 
             if(Physics.Raycast(ray, out hit,100)){
-                selectedGameObject = hit.collider.GetComponentInParent<RoadStates>().gameObject;
-                selectedGameObject.GetComponent<RoadStates>().selectedRoad.SetActive(true);
+                
+                    selectedGameObject = hit.collider.GetComponentInParent<RoadStates>().gameObject;
+                    selectedGameObject.GetComponent<RoadStates>().selectedRoad.SetActive(true);
+                
+               
+
+                
             }
             
             UI.SetActive(true);
-            foreach (var button in UI.GetComponentsInChildren<AddSituation>()){
-                button.selectedGameObject = selectedGameObject;
-            }
+            UI.GetComponent<SelectedRoads>().lSelectedGameObject.Add(selectedGameObject);
+            
         }
     }
 }

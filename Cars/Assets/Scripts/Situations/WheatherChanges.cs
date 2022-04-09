@@ -15,8 +15,10 @@ public class WheatherChanges : MonoBehaviour
     public float chageBrakeTorque;
     public float changeStiffnessSideway;
     public float changeStiffnessForward;
+
     void Start()
     {
+
 
     }
 
@@ -26,7 +28,7 @@ public class WheatherChanges : MonoBehaviour
         if (collision.gameObject.GetComponent<CarMoving>())
         {
             motorTorque = collision.gameObject.GetComponent<CarMoving>().torqueValue;
-           // collision.gameObject.GetComponent<CarMoving>().torqueValue = changeMotorTorque;
+            // collision.gameObject.GetComponent<CarMoving>().torqueValue = changeMotorTorque;
             stiffness = collision.gameObject.GetComponent<CarMoving>().stiffnessSideway;
             collision.gameObject.GetComponent<CarMoving>().stiffnessSideway = changeStiffnessSideway;
             collision.gameObject.GetComponent<CarMoving>().stiffnessForward = changeStiffnessForward;
@@ -37,7 +39,7 @@ public class WheatherChanges : MonoBehaviour
             brakeTorque = collision.gameObject.GetComponent<CarMoving>().brakeTorque;
             collision.gameObject.GetComponent<CarMoving>().brakeTorque = chageBrakeTorque;
 
-          
+
             collision.gameObject.GetComponent<CarMoving>().UpdateValues();
         }
     }
@@ -57,5 +59,9 @@ public class WheatherChanges : MonoBehaviour
             collision.gameObject.GetComponent<CarMoving>().UpdateValues();
         }
     }
+
+   
+
+   
 
 }
