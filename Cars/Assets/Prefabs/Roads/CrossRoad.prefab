@@ -366,7 +366,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   changeSteerControl: 0.4
-  chageBrakeTorque: 20
+  chageBrakeTorque: 50
   changeStiffnessSideway: 1
   changeStiffnessForward: 1
 --- !u!1 &8482532460939432418
@@ -5656,7 +5656,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   changeSteerControl: 0.5
-  chageBrakeTorque: 10
+  chageBrakeTorque: 70
   changeStiffnessSideway: 1
   changeStiffnessForward: 1
 --- !u!65 &8482532461583865230

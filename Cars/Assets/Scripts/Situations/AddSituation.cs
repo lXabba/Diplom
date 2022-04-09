@@ -5,6 +5,7 @@ using UnityEngine;
 public class AddSituation : MonoBehaviour
 {
     public GameObject selectedGameObject;
+   
     // Start is called before the first frame update
     void Start()
     {
@@ -39,4 +40,6 @@ public class AddSituation : MonoBehaviour
     public void Clear(){
         selectedGameObject.GetComponent<RoadStates>().OffAll();
     }
+
+   
 }
