@@ -18,7 +18,25 @@ public class AddSituation : MonoBehaviour
     }
 
     public void AddSnow(){
+        selectedGameObject.GetComponent<RoadStates>().OffAll();
         selectedGameObject.GetComponent<RoadStates>().snowZone.SetActive(true);
-        selectedGameObject.GetComponent<RoadStates>().selectedRoad.SetActive(false);
+    }
+
+    public void AddRaining(){
+        selectedGameObject.GetComponent<RoadStates>().OffAll();
+        selectedGameObject.GetComponent<RoadStates>().rainingZone.SetActive(true);
+    }
+
+    public void AddIce(){
+        selectedGameObject.GetComponent<RoadStates>().OffAll();
+        selectedGameObject.GetComponent<RoadStates>().iceZone.SetActive(true);
+    }
+    public void AddSleppingPolicman(){
+        selectedGameObject.GetComponent<RoadStates>().OffAll();
+        selectedGameObject.GetComponent<RoadStates>().sleepingPolicman.SetActive(true);
+    }
+
+    public void Clear(){
+        selectedGameObject.GetComponent<RoadStates>().OffAll();
     }
 }
