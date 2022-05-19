@@ -8,8 +8,11 @@ public class RoadStates : MonoBehaviour
     public GameObject rainingZone;
     public GameObject iceZone;
     public GameObject sleepingPolicman;
+    public GameObject pitsOnRoad;
+    public GameObject pieceOfRoad;
     public GameObject ussualZone;
     public GameObject selectedRoad;
+    
 
 
 
@@ -25,7 +28,7 @@ public class RoadStates : MonoBehaviour
     {
         
     }
-
+    
     public void OffAll(){
         selectedRoad.SetActive(false);
         snowZone.SetActive(false);
@@ -33,5 +36,17 @@ public class RoadStates : MonoBehaviour
         iceZone.SetActive(false);
         sleepingPolicman.SetActive(false);
         ussualZone.SetActive(false);
+        pitsOnRoad.SetActive(false);
+        DeletePits();
+    }
+
+    public void AddPits(){
+        pitsOnRoad.SetActive(true);
+        pieceOfRoad.SetActive(false);
+    }
+
+    private void DeletePits(){
+        pitsOnRoad.SetActive(false);
+        pieceOfRoad.SetActive(true);
     }
 }
