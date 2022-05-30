@@ -29,7 +29,7 @@ public class AnimalTrigger : MonoBehaviour
     
     void Update()
     {
-        animalPrefab.transform.rotation = Quaternion.identity;
+        //animalPrefab.transform.rotation = Quaternion.identity;
         
      
       
@@ -37,15 +37,17 @@ public class AnimalTrigger : MonoBehaviour
             i++;
             if (i==lWayPoints.Count) i=0;
             //animalPrefab.transform.LookAt(lWayPoints[i].position);
-            //animalBody.transform.rotation = Quaternion.LookRotation(animalBody.transform.position - lWayPoints[i].position);
+            animalPrefab.transform.rotation = Quaternion.LookRotation(animalPrefab.transform.position - lWayPoints[i].position);
 
         }
        
-         animalPrefab.transform.position = Vector3.MoveTowards(animalPrefab.transform.position, new Vector3( lWayPoints[i].position.x, 0.5f ,lWayPoints[i].position.z), animalSpeed * Time.deltaTime);
-        
+     animalPrefab.transform.position = Vector3.MoveTowards(animalPrefab.transform.position, new Vector3( lWayPoints[i].position.x, 0.5f ,lWayPoints[i].position.z), animalSpeed * Time.deltaTime);
+        //
       
        
     }
+
+    
 
     
     

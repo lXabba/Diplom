@@ -62,6 +62,7 @@ public class AddSituation : MonoBehaviour
         foreach (var selectedGameObject in root.GetComponentInParent<SelectedRoads>().lSelectedGameObject){
         selectedGameObject.GetComponent<RoadStates>().OffAll();
         selectedGameObject.GetComponent<RoadStates>().AddPits();
+        selectedGameObject.GetComponent<RoadStates>().ussualZone.SetActive(true);
         }
         root.GetComponentInParent<SelectedRoads>().lSelectedGameObject.Clear();
     }

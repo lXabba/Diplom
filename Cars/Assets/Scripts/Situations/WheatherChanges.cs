@@ -24,7 +24,7 @@ public class WheatherChanges : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        print("here");
+      
         if (collision.gameObject.GetComponent<CarMoving>())
         {
             motorTorque = collision.gameObject.GetComponent<CarMoving>().torqueValue;
@@ -55,7 +55,7 @@ public class WheatherChanges : MonoBehaviour
             collision.gameObject.GetComponent<CarMoving>().stiffnessForward = stiffness;
             collision.gameObject.GetComponent<CarMoving>().stiffnessSideway = stiffness;
 
-            print(stiffness);
+          
             collision.gameObject.GetComponent<CarMoving>().UpdateValues();
         }
     }
