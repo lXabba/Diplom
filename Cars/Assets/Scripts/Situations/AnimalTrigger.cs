@@ -10,6 +10,7 @@ public class AnimalTrigger : MonoBehaviour
     public float animalSpeed;
     public List<Transform> lWayPoints;
     int i = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -45,6 +46,11 @@ public class AnimalTrigger : MonoBehaviour
         //
       
        
+    }
+
+    private void OnEnable() {
+        i=0;
+        animalPrefab.transform.position = new Vector3(lWayPoints[0].position.x, lWayPoints[0].position.y, lWayPoints[0].position.z);
     }
 
     
