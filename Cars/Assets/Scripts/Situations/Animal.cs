@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class Animal : MonoBehaviour
 {
+public GameObject animalZone;
 
     private void OnCollisionEnter(Collision other) {
-        //GetComponent<Animation>().Stop();
-
+	if (other.gameObject.GetComponent<CarMoving>()){
+        //GetComponentInChildren<Animator>().Stop();
+        animalZone.GetComponent<AnimalZone>().alive = false;
+	}
     }
 
-}
+} 

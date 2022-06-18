@@ -4,17 +4,50 @@ using UnityEngine;
 
 public class AnimalZone : MonoBehaviour
 {
-    public GameObject animalTrigger;
+    public GameObject WayContainer;
+    public GameObject animalPrefab;
+    public float animalSpeed;
+    public List<Transform> lWayPoints;
+    public bool alive = true;
+    private int i = 0;
 
-    private void OnTriggerEnter(Collider other) {
-        if (other.GetComponent<CarMoving>()){
-            animalTrigger.SetActive(true);
-        }    
+    // Start is called before the first frame update
+    void Start()
+    {
+        foreach (var wayPoint in WayContainer.GetComponentsInChildren<Transform>())
+        {
+            if (wayPoint.gameObject.tag == "WayPoint")
+            {
+                lWayPoints.Add(wayPoint);
+            }
+        }
+
+        animalPrefab.transform.position = new Vector3(lWayPoints[0].position.x, lWayPoints[0].position.y, lWayPoints[0].position.z);
+
+       
     }
 
-    private void OnTriggerExit(Collider other) {
-        if (other.GetComponent<CarMoving>()){
-            animalTrigger.SetActive(false);
-        }    
-    }
+    
+    void Update()
+    {
+        if (alive) {
+        if (Vector3.Distance(animalPrefab.transform.position, lWayPoints[i].position)<1) {
+            i++;
+            if (i==lWayPoints.Count) i=0;
+            //animalPrefab.transform.LookAt(lWayPoints[i].position);
+            animalPrefab.transform.rotation = Quaternion.LookRotation(animalPrefab.transform.position - lWayPoints[i].position);
+
+        }
+       
+     animalPrefab.transform.position = Vector3.MoveTowards(animalPrefab.transform.position, new Vector3( lWayPoints[i].position.x, 0.5f ,lWayPoints[i].position.z), animalSpeed * Time.deltaTime);
+        //   
 }
+    }
+
+    private void OnEnable() {
+        i=0;
+        alive = true;
+        animalPrefab.transform.position = new Vector3(lWayPoints[0].position.x, lWayPoints[0].position.y, lWayPoints[0].position.z);  }   
+        
+        } 
+ 
